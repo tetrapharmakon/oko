@@ -22,7 +22,7 @@ fields:
 <form>
 
   {% for field in page.fields %}
-    <label>{{ field.name }}</label>
+    <label>{{ field.label }}</label>
     <br/>
     <input name="{{ field.name }}" />
     <br/>
