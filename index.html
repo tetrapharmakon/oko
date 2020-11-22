@@ -6,24 +6,7 @@
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
-<script>
-
-var $form = $('form#test-form'),
-    url = 'https://script.google.com/macros/s/AKfycbwf0JYoX-SCa3p3nWRJ0DinLXenfsqr1_LY9glfl4IfHsTlj7c/exec'
-
-$('#submit-form').on('click', function(e) {
-  e.preventDefault();
-  var jqxhr = $.ajax({
-    url: url,
-    method: "GET",
-    dataType: "json",
-    data: $form.serializeObject()
-  }).success(
-    alert("GREAT SUCCESS")
-    // do something
-  );
-})
-</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-serialize-object/2.5.0/jquery.serialize-object.min.js" integrity="sha512-Gn0tSSjkIGAkaZQWjx3Ctl/0dVJuTmjW/f9QyB302kFjU4uTNP4HtA32U2qXs/TRlEsK5CoEqMEMs7LnzLOBsA==" crossorigin="anonymous"></script>
 </head>
 <body>
   <form id="myForm">
@@ -55,5 +38,24 @@ $('#submit-form').on('click', function(e) {
     <br/>
   </form>
   <button id="submit-form">Submit</button>
+
+<script>
+var $form = $('form#myForm'),
+    url = 'https://script.google.com/macros/s/AKfycbwf0JYoX-SCa3p3nWRJ0DinLXenfsqr1_LY9glfl4IfHsTlj7c/exec'
+
+$('#submit-form').on('click', function(e) {
+  e.preventDefault();
+  var jqxhr = $.ajax({
+    url: url,
+    method: "GET",
+    dataType: "json",
+    data: $form.serializeObject()
+  }).success(
+    alert("GREAT SUCCESS")
+    // do something
+  );
+})
+</script>
+
 </body>
 </html>
