@@ -1,1 +1,59 @@
-Foobar.
+<!DOCTYPE html>
+<html>
+<head>
+<title>Save Web Form Data to Spreadsheets - Contact Form</title>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+<script>
+
+var $form = $('form#test-form'),
+    url = 'https://script.google.com/macros/s/AKfycbwf0JYoX-SCa3p3nWRJ0DinLXenfsqr1_LY9glfl4IfHsTlj7c/exec'
+
+$('#submit-form').on('click', function(e) {
+  e.preventDefault();
+  var jqxhr = $.ajax({
+    url: url,
+    method: "GET",
+    dataType: "json",
+    data: $form.serializeObject()
+  }).success(
+    alert("GREAT SUCCESS")
+    // do something
+  );
+})
+</script>
+</head>
+<body>
+  <form id="myForm">
+    <label>Full Name</label>
+    <br/>
+    <input name="full_name" />
+    <br/>
+    <label>Email</label>
+    <br/>
+    <input name="email" />
+    <br/>
+    <label>Q1</label>
+    <br/>
+    <input type="radio" name="q_1" value="A" />A<br/>
+    <input type="radio" name="q_1" value="B" />B<br/>
+    <input type="radio" name="q_1" value="C" />C<br/>
+    <br/>
+    <label>Q2</label>
+    <br/>
+    <input type="radio" name="q_2" value="A" />A<br/>
+    <input type="radio" name="q_2" value="B" />B<br/>
+    <input type="radio" name="q_2" value="C" />C<br/>
+    <br/>
+    <label>Q3</label>
+    <br/>
+    <input type="radio" name="q_3" value="A" />A<br/>
+    <input type="radio" name="q_3" value="B" />B<br/>
+    <input type="radio" name="q_3" value="C" />C<br/>
+    <br/>
+  </form>
+  <button onclick="SubForm()">Submit</button>
+</body>
+</html>
